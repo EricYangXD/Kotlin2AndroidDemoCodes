@@ -11,8 +11,8 @@ class StringActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_string)
 
-        val origin:String = tv_origin.text.toString()
-        var origin_trim:String = origin
+        val origin: String = tv_origin.text.trim().toString()
+        var origin_trim: String = origin
         //如果字符串中有小数点
         if (origin_trim.indexOf('.') > 0) {
             //则截取小数点前面的整数部分
@@ -20,20 +20,20 @@ class StringActivity : AppCompatActivity() {
         }
         //tv_convert.text = origin_trim
 
-        var int:Int
-        btn_int.setOnClickListener { int=origin_trim.toInt(); tv_convert.text=int.toString() }
-        var long:Long
-        btn_long.setOnClickListener { long=origin_trim.toLong(); tv_convert.text=long.toString() }
-        var float:Float
-        btn_float.setOnClickListener { float=origin.toFloat(); tv_convert.text=float.toString() }
-        var double:Double
-        btn_double.setOnClickListener { double=origin.toDouble(); tv_convert.text=double.toString() }
+        var int: Int
+        btn_int.setOnClickListener { int = origin_trim.toInt(); tv_convert.text = int.toString() }
+        var long: Long
+        btn_long.setOnClickListener { long = origin_trim.toLong(); tv_convert.text = long.toString() }
+        var float: Float
+        btn_float.setOnClickListener { float = origin.toFloat(); tv_convert.text = float.toString() }
+        var double: Double
+        btn_double.setOnClickListener { double = origin.toDouble(); tv_convert.text = double.toString() }
         //origin.toBoolean(); //只能转换字符串“true”和“false”
-        var char_array:CharArray
+        var char_array: CharArray
         btn_chararray.setOnClickListener {
             //把字符串转换为字符数组
             char_array = origin.toCharArray()
-            var str:String = ""
+            var str: String = ""
             for (item in char_array) {
                 str = str + item.toString() + ","
             }
@@ -42,18 +42,18 @@ class StringActivity : AppCompatActivity() {
 
         btn_replace.setOnClickListener {
             //把字符串中的小数点替换为加号
-            tv_convert.text=origin.replace(".", "+")
+            tv_convert.text = origin.replace(".", "+")
         }
         btn_split.setOnClickListener {
             //按照小数点把字符串分割为字符串数组
-            var strList:List<String> = origin.split(".")
-            var strResult:String = ""
+            var strList: List<String> = origin.split(".")
+            var strResult: String = ""
             for (item in strList) {
                 strResult = strResult + item + ", "
             }
             tv_convert.text = strResult
         }
-        var number:Int
+        var number: Int
         btn_cut.setOnClickListener {
             number = et_number.text.toString().toInt()
             //Kotlin的字符串允许通过下标直接访问该位置上的元素
